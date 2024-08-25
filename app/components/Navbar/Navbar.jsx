@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,8 +15,8 @@ const Navbar = () => {
       <div className="flex">
         <h1 className="text-xl font-bold">DataInt</h1>
         {/* <div class="h-[25px] min-h-[1em] w-px self-stretch dark:via-neutral-400"></div> */}
-        <p className="px-2 h-[150px] black">|</p>
-        <h2>Home</h2>
+        <p className="px-2 h-[100px] black">|</p>
+        <Link href='/'><h2>Home</h2></Link>
       </div>
       <div>
         <button className="block md:hidden" onClick={toggleMenu}>
@@ -30,9 +31,9 @@ const Navbar = () => {
           )}
         </button>
         <ul className={`flex flex-col items-center ${isMenuOpen ? 'block' : 'hidden'} md:flex md:flex-row`}>
-          <li className="px-4 font-bold">Our work</li>
-          <li className="px-4 font-bold">About us</li>
-          <li className="px-4 font-bold">Contact</li>
+          <Link href='/ourwork'><li className="px-4 font-bold">Our work</li></Link>
+          <Link href='aboutus'><li className="px-4 font-bold">About us</li></Link>
+          <Link href='/contact'><li className="px-4 font-bold">Contact</li></Link>
         </ul>
       </div>
     </div>
