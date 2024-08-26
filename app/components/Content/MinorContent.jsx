@@ -5,7 +5,7 @@ import { MainCta } from '../Buttons/main/MainCta';
 
 const MinorContent = () => {
     return (
-        <div className='lg:flex lg:justify-between lg:space-x-16 text-center'>
+        <div className='lg:flex lg:justify-between lg:space-x-16 text-center pb-16'>
             <section>
                 <Image src={minorImage} alt='section image' width={400} height={200} />
             </section>
