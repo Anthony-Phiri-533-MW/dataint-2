@@ -3,7 +3,7 @@ import { FeaturedContent } from "./FeaturedContent";
 
 const MainContent = () => {
     return (
-        <div className='text-center'>
+        <div className='text-center' data-testid="main-content">
             <div className='pb-16'>
                 <section>
                     <h2 className='text-3xl font-bold'>Unlock the Power of Data-Driven Innovation </h2>

@@ -4,7 +4,7 @@ import { SocialIcons } from './SocialIcons';
 
 const Footer = () => {
     return (
-        <footer >
+        <footer>
             <Divider />
             <div className='lg:flex lg:justify-between from-current'>
                 <div>
