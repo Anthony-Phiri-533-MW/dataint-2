@@ -22,4 +22,12 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 Jest has been used to test using the documention from nextjs.org @https://nextjs.org/docs/app/building-your-application/testing/jest
 a single test has been added to test the home component in app/page.tsx in ./__tests__ directory
 
+## Linting
+to lint the code run the following command:
+```bash
+npm run lint
+```
+
+Es Lint has been use to lint this project
+
 ### This project has been deployed on vercel
