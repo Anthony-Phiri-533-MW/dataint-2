@@ -33,7 +33,7 @@ const Navbar = () => {
         <ul className={`flex flex-col items-center ${isMenuOpen ? 'block' : 'hidden'} md:flex md:flex-row`}>
           <Link href='/ourwork'><li className="px-4 font-bold">Our work</li></Link>
           <Link href='aboutus'><li className="px-4 font-bold">About us</li></Link>
-          <Link href='/contact'><li className="px-4 font-bold">Contact</li></Link>
+          <Link href='/contactus'><li className="px-4 font-bold">Contact</li></Link>
         </ul>
       </div>
     </div>

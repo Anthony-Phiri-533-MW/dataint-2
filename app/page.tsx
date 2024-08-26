@@ -19,12 +19,4 @@ export default function Home() {
   );
 }
 
-/* Rectangle 1 */
-
-// position: absolute;
-// width: 82px;
-// height: 80px;
-// left: 0px;
-// top: 0px;
-
 
