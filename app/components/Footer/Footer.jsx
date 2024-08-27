@@ -1,6 +1,7 @@
 import React from 'react'
 import { Divider } from './Divider';
 import { SocialIcons } from './SocialIcons'; 
+import Link from 'next/link';
 
 const Footer = () => {
     return (
@@ -16,18 +17,16 @@ const Footer = () => {
                     <div>
                         <h1 className='font-bold text-xl'>Company</h1>
                         <ul>
-                            <li>Blog</li>
-                            <li>Careers</li>
-                            <li>About Us</li>
-                            <li>Projects</li>
+                            <Link href='/aboutus'><li>About Us</li></Link>
+                            <Link href='/ourwork'><li>Projects</li></Link>
                         </ul>
                     </div>
 
                     <div>
                         <h1 className='font-bold text-xl'>Resources</h1>
                         <ul>
-                            <li>Models</li>
-                            <li>Papers</li>
+                            <Link href='/ourwork'><li>Models</li></Link>
+                            <Link href='/ourwork'><li>Papers</li></Link>
                         </ul>
                     </div>
                 </div>
