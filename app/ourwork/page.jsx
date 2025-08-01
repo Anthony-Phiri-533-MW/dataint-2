@@ -45,24 +45,24 @@ const OurWork = () => {
 
             <div className="flex flex-col lg:flex-row flex-1">
                 {/* Sidebar */}
-                <aside className="lg:w-64 bg-gray-100 p-6 lg:sticky lg:top-6 lg:h-screen">
+                <aside className="lg:w-64 bg-gray-100 p-6 lg:sticky lg:top-6 lg:h-screen rounded-lg">
                     <h2 className="text-2xl font-semibold mb-6">Filter By</h2>
                     <div className="space-y-4">
                         <button
                             onClick={() => setSelectedCategory('projects')}
-                            className={`w-full py-2 px-4 text-left rounded-lg ${selectedCategory === 'projects' ? 'bg-[#001538] text-[#FFFFFF]' : 'bg-white text-blue-500'}`}
+                            className={`w-full py-2 px-4 text-left rounded-lg transition ${selectedCategory === 'projects' ? 'bg-[#001538] text-[#FFFFFF]' : 'bg-white text-blue-500 hover:bg-gray-200'}`}
                         >
                             Projects
                         </button>
                         <button
                             onClick={() => setSelectedCategory('models')}
-                            className={`w-full py-2 px-4 text-left rounded-lg ${selectedCategory === 'models' ? 'bg-[#001538] text-[#FFFFFF]' : 'bg-white text-blue-500'}`}
+                            className={`w-full py-2 px-4 text-left rounded-lg transition ${selectedCategory === 'models' ? 'bg-[#001538] text-[#FFFFFF]' : 'bg-white text-blue-500 hover:bg-gray-200'}`}
                         >
                             Models
                         </button>
                         <button
                             onClick={() => setSelectedCategory('papers')}
-                            className={`w-full py-2 px-4 text-left rounded-lg ${selectedCategory === 'papers' ? 'bg-[#001538] text-[#FFFFFF]' : 'bg-white text-blue-500'}`}
+                            className={`w-full py-2 px-4 text-left rounded-lg transition ${selectedCategory === 'papers' ? 'bg-[#001538] text-[#FFFFFF]' : 'bg-white text-blue-500 hover:bg-gray-200'}`}
                         >
                             Papers
                         </button>
@@ -70,7 +70,7 @@ const OurWork = () => {
                 </aside>
 
                 {/* Main Content */}
-                <main className="flex-1 p-6 lg:pl-0">
+                <main className="flex-1 p-6 lg:pl-10">
                     <h1 className="text-4xl font-bold text-center mb-8">Our Work</h1>
 
                     {selectedCategory === 'models' && (
@@ -78,7 +78,7 @@ const OurWork = () => {
                             <h2 className="text-3xl font-semibold mb-4">Models</h2>
                             <ul className="space-y-4">
                                 {models.map((model) => (
-                                    <li key={model.title} className="p-4 border border-gray-200 rounded-lg shadow-sm">
+                                    <li key={model.title} className="p-4 border border-gray-200 rounded-lg shadow-sm bg-white">
                                         <h3 className="text-xl font-medium">{model.title}</h3>
                                         <p className="mt-2 text-gray-700">{model.description}</p>
                                         <button
@@ -91,7 +91,7 @@ const OurWork = () => {
                                                     </a>
                                                 </div>
                                             )}
-                                            className="mt-2 inline-block bg-[#001538] text-[#FFFFFF] hover:underline"
+                                            className="mt-3 inline-block bg-[#001538] text-white px-4 py-2 rounded hover:bg-[#002a5c] transition"
                                         >
                                             Learn More
                                         </button>
@@ -106,14 +106,12 @@ const OurWork = () => {
                             <h2 className="text-3xl font-semibold mb-4">Papers</h2>
                             <ul className="space-y-4">
                                 {papers.map((paper) => (
-                                    <li key={paper.title} className="p-4 border border-gray-200 rounded-lg shadow-sm">
+                                    <li key={paper.title} className="p-4 border border-gray-200 rounded-lg shadow-sm bg-white">
                                         <h3 className="text-xl font-medium">{paper.title}</h3>
                                         <p className="mt-1 text-gray-600">Authors: {paper.authors}</p>
-                                        <button className="mt-2 inline-block bg-[#001538] text-[#FFFFFF] hover:underline">
-                                            <a href={paper.link}>
-                                                Read Paper
-                                            </a>
-                                        </button>
+                                        <a href={paper.link} className="inline-block bg-[#001538] text-white px-4 py-2 rounded mt-3 hover:bg-[#002a5c] transition">
+                                            Read Paper
+                                        </a>
                                     </li>
                                 ))}
                             </ul>
@@ -125,18 +123,18 @@ const OurWork = () => {
                             <h2 className="text-3xl font-semibold mb-4">Projects</h2>
                             <ul className="space-y-4">
                                 {projects.map((project) => (
-                                    <li key={project.title} className="p-4 border border-gray-200 rounded-lg shadow-sm">
+                                    <li key={project.title} className="p-4 border border-gray-200 rounded-lg shadow-sm bg-white">
                                         <h3 className="text-xl font-medium">{project.title}</h3>
                                         <p className="mt-2 text-gray-700">{project.description}</p>
                                         <button
                                             onClick={() => openModal(
                                                 <div>
                                                     <h3 className="text-xl font-medium mb-2">{project.title}</h3>
-                                                    <p className="mb-4">Time Period: {project.timePeriod}</p>
-                                                    <p className="mb-4">Companies Involved: {project.companies}</p>
+                                                    <p className="mb-2"><strong>Time Period:</strong> {project.timePeriod}</p>
+                                                    <p><strong>Companies Involved:</strong> {project.companies}</p>
                                                 </div>
                                             )}
-                                            className="mt-2 inline-block bg-[#001538] text-[#FFFFFF] hover:underline"
+                                            className="mt-3 inline-block bg-[#001538] text-white px-4 py-2 rounded hover:bg-[#002a5c] transition"
                                         >
                                             Explore Project
                                         </button>

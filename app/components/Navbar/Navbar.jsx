@@ -1,74 +1,142 @@
 'use client'
 
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  /* ---------- Variants ---------- */
+  const menuVariants = {
+    closed: { opacity: 0, height: 0 },
+    open:   { opacity: 1, height: 'auto' }
+  };
+  const itemVariants = {
+    closed: { x: -20, opacity: 0 },
+    open:   { x:   0, opacity: 1 }
   };
 
   return (
-    <header role="banner">
-      <div className="flex justify-between" data-testid="navbar">
-        <div className="flex">
-          <h1 className="text-xl font-bold">DataInt</h1>
-          {/* <div class="h-[25px] min-h-[1em] w-px self-stretch dark:via-neutral-400"></div> */}
-          <p className="px-2 h-[100px] black">|</p>
-          <Link href='/'><h2>Home</h2></Link>
+    <motion.header
+      role="banner"
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0,  opacity: 1 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className="px-4 py-3"           /* ← uniform padding on every screen */
+    >
+      {/* ---------- Brand ---------- */}
+      <div className="flex justify-between items-center">
+        <div className="flex items-center space-x-4">
+          <motion.h1
+            className="text-3xl font-bold"
+            whileHover={{ color: '#3B82F6' }}
+          >
+            DataInt
+          </motion.h1>
+          <span className="text-black">|</span>
+          <Link href="/">
+            <motion.h2
+              whileHover={{ color: '#3B82F6' }}
+              className="font-medium"
+            >
+              Home
+            </motion.h2>
+          </Link>
         </div>
-        <div>
-          <button className="block md:hidden" onClick={toggleMenu}>
+
+        {/* ---------- Desktop nav ---------- */}
+        <nav className="hidden md:flex items-center space-x-6">
+          {['Our work', 'About us', 'Contact'].map(label => (
+            <Link key={label} href={`/${label.toLowerCase().replace(' ', '')}`}>
+              <motion.span
+                className="font-bold cursor-pointer text-xl"
+                whileHover={{ color: '#3B82F6', y: -2 }}
+              >
+                {label}
+              </motion.span>
+            </Link>
+          ))}
+        </nav>
+
+        {/* ---------- Mobile toggle ---------- */}
+        <motion.button
+          className="md:hidden"
+          onClick={toggleMenu}
+          whileTap={{ scale: 0.9 }}
+        >
+          <AnimatePresence mode="wait">
             {isMenuOpen ? (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6" />
-              </svg>
+              <motion.svg
+                key="close"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+                initial={{ rotate: -90, opacity: 0 }}
+                animate={{ rotate: 0,  opacity: 1 }}
+                exit={{ rotate: 90,  opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                {/* ✖ icon */}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </motion.svg>
             ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+              <motion.svg
+                key="open"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+                initial={{ rotate: 90,  opacity: 0 }}
+                animate={{ rotate: 0,  opacity: 1 }}
+                exit={{ rotate: -90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </motion.svg>
             )}
-          </button>
-          <ul className={`flex flex-col items-center ${isMenuOpen ? 'block' : 'hidden'} md:flex md:flex-row`}>
-            <Link href='/ourwork'><li className="px-4 font-bold">Our work</li></Link>
-            <Link href='aboutus'><li className="px-4 font-bold">About us</li></Link>
-            <Link href='/contact'><li className="px-4 font-bold">Contact</li></Link>
-          </ul>
-        </div>
+          </AnimatePresence>
+        </motion.button>
       </div>
-    </header>
+
+      {/* ---------- Mobile drawer ---------- */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.ul
+            className="md:hidden flex flex-col items-center space-y-4 pt-4"
+            variants={menuVariants}
+            initial="closed"
+            animate="open"
+            exit="closed"
+          >
+            {['Our work', 'About us', 'Contact'].map(label => (
+              <motion.li key={label} variants={itemVariants}>
+                <Link href={`/${label.toLowerCase().replace(' ', '')}`}>
+                  <span className="font-bold" onClick={toggleMenu}>
+                    {label}
+                  </span>
+                </Link>
+              </motion.li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 };
 
 export default Navbar;
-
-
-
-
-
-// import React from 'react'
-
-// const Navbar = () => {
-//   return (
-//     <div className='flex justify-between'>
-//         <div className='flex'>
-//             <h1 className='text-xl font-bold'>DataInt</h1>
-//             {/* <div class="h-[25px] min-h-[1em] w-px self-stretch dark:via-neutral-400"></div> */}
-//             <p className='px-2 h-[150px] black'>|</p>
-//             <h2>Home</h2>
-
-//         </div>
-//         <div>
-//             <ul className='flex'>
-//                 <li className='px-4 font-bold'>Our work</li>
-//                 <li className='px-4 font-bold'>About us</li>
-//                 <li className='px-4 font-bold'>Contact</li>
-//             </ul>
-//         </div>
-//     </div>
-//   )
-// }
-
-// export default Navbar

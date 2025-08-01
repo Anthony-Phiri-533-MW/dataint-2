@@ -1,28 +1,97 @@
+'use client'
 import React from 'react'
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
 import Image from 'next/image';
 import minorImage from "./../../../public/file 1.png";
 import { MainCta } from '../Buttons/main/MainCta';
 
 const MinorContent = () => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.3,
+                delayChildren: 0.2
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { x: -50, opacity: 0 },
+        visible: {
+            x: 0,
+            opacity: 1,
+            transition: {
+                duration: 0.6,
+                ease: "easeOut"
+            }
+        }
+    };
+
+    const imageVariants = {
+        hidden: { x: 50, opacity: 0, scale: 0.8 },
+        visible: {
+            x: 0,
+            opacity: 1,
+            scale: 1,
+            transition: {
+                duration: 0.8,
+                ease: "easeOut"
+            }
+        }
+    };
+
     return (
-        <div className='lg:flex lg:justify-between lg:space-x-16 text-center pb-16' data-testid="minor-content">
-            <section>
-                <Image src={minorImage} alt='section image' width={400} height={200} />
-            </section>
-            <section className='md:w-1/2 w-full mt-14 block'>
-                <h1 className='lg:text-3xl text-xl grid grid-cols-1 font-bold lg:tracking-wide pb-10 uppercase'>
+        <motion.div 
+            className='lg:flex lg:justify-between lg:space-x-16 text-center pb-16' 
+            data-testid="minor-content"
+            ref={ref}
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+        >
+            <motion.section variants={imageVariants}>
+                <motion.div
+                    whileHover={{ 
+                        scale: 1.05,
+                        rotate: -2,
+                        transition: { duration: 0.3 }
+                    }}
+                >
+                    <Image src={minorImage} alt='section image' width={400} height={200} />
+                </motion.div>
+            </motion.section>
+            <motion.section 
+                className='md:w-1/2 w-full mt-14 block' 
+                variants={itemVariants}
+            >
+                <motion.h1 
+                    className='lg:text-3xl text-xl grid grid-cols-1 font-bold lg:tracking-wide pb-10 uppercase'
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                >
                     Your Success is Our Mission
-                </h1>
-                <h3 className='lg:text-2xl text-xl grid grid-cols-1 lg:tracking-wide lg:leading-relaxed'>
+                </motion.h1>
+                <motion.h3 
+                    className='lg:text-2xl text-xl grid grid-cols-1 lg:tracking-wide lg:leading-relaxed'
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    transition={{ delay: 0.4, duration: 0.6 }}
+                >
                     We believe in building trust through transparency.
                     Our team of researchers, data scientists, and developers
                     will work openly with you to understand your challenges,
                     navigate your data responsibly,
                     and deliver solutions that drive results.
-                </h3>
-                
-            </section>
-        </div>
+                </motion.h3>
+            </motion.section>
+        </motion.div>
     )
 }
 
