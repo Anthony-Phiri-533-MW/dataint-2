@@ -1,10 +1,27 @@
 'use client'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion';
 import { MainCta } from "../Buttons/main/MainCta";
 import Image from 'next/image';
 import heroImage from "../../../public/bgremoved1 1.png";
 import Link from 'next/link';
+
+const TypingText = ({ text, speed = 50 }) => {
+    const [displayedText, setDisplayedText] = useState('');
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        if (index < text.length) {
+            const timer = setTimeout(() => {
+                setDisplayedText(text.substring(0, index + 1));
+                setIndex(index + 1);
+            }, speed);
+            return () => clearTimeout(timer);
+        }
+    }, [index, text, speed]);
+
+    return <span>{displayedText}</span>;
+};
 
 const Hero = () => {
     const containerVariants = {
@@ -56,16 +73,14 @@ const Hero = () => {
                     className='lg:text-5xl text-4xl grid grid-cols-1 font-bold lg:tracking-wide'
                     variants={itemVariants}
                 >
-                    Unlocking tomorrow&apos;s <span>solutions today</span>
+                    <TypingText text="Transforming Data into Strategic Advantage" speed={50} />
                 </motion.h1>
                 <motion.h3 
-                    className='lg:text-2xl text-xl grid grid-cols-1'
+                    className='lg:text-2xl text-xl grid grid-cols-1 leading-relaxed'
                     variants={itemVariants}
                 >
-                    Experience Data-Driven Excellence
-                    <span>Empowering Insights, </span>
-                    <span>Transforming Businesses </span>
-                    <span>and various fields</span>
+                    <span>Experience Data-Driven Excellence with Cutting-Edge AI Solutions</span>
+                    <span className='text-lg mt-4 text-gray-600'>Empower your organization with predictive analytics, intelligent automation, and data-driven insights that drive measurable business results and competitive advantage</span>
                 </motion.h3>
 
                 <motion.div 

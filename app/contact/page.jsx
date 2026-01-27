@@ -14,12 +14,13 @@ const Page = () => {
       {/* Hero */}
       <section className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-          We do the best at anything trusted with us.
+          Let's Transform Your Data into Results
         </h1>
-        <p className="mt-3 text-lg text-gray-600">
-          Ready to explore how Data Intelligence can help your business?
-          <br />
-          Get in touch with our team today.
+        <p className="mt-4 text-lg text-gray-600 leading-relaxed">
+          Ready to unlock the power of data-driven innovation? Our team of experts is here to help you 
+          navigate complex data challenges and build intelligent solutions that drive measurable business impact.
+          <br className='hidden md:block' />
+          Get in touch with us today for a free consultation.
         </p>
       </section>
 

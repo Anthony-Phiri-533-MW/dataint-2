@@ -42,10 +42,11 @@ const Footer = () => {
             animate={isInView ? "visible" : "hidden"}
         >
             <Divider />
-            <motion.div className='lg:flex lg:justify-between from-current' variants={itemVariants}>
+            <motion.div className='lg:flex lg:justify-between lg:space-x-12 from-current mb-8' variants={itemVariants}>
                 <motion.div
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
+                    className='mb-8 lg:mb-0'
                 >
                     <motion.h1 
                         className='font-bold text-3xl'
@@ -54,19 +55,33 @@ const Footer = () => {
                     >
                         DataInt
                     </motion.h1>
-                    <p>Data Intelligence</p>
+                    <p className='text-gray-600 text-sm mt-1'>Data Intelligence</p>
+                    <p className='text-gray-600 text-xs mt-3 max-w-xs leading-relaxed'>
+                        Transforming data into strategic advantage through cutting-edge AI, machine learning, and data engineering solutions.
+                    </p>
                 </motion.div>
 
-                <div className='lg:flex lg:space-x-4'>
+                <div className='lg:flex lg:space-x-16'>
                     <motion.div
                         variants={itemVariants}
                         whileHover={{ scale: 1.02 }}
                         transition={{ duration: 0.3 }}
+                        className='mb-8 lg:mb-0'
                     >
-                        <h1 className='font-bold text-xl'>Company</h1>
-                        <ul>
+                        <h1 className='font-bold text-xl mb-4'>Company</h1>
+                        <ul className='space-y-2'>
+                            <Link href='/'>
+                                <motion.li
+                                    className='text-gray-600 text-sm hover:text-gray-900'
+                                    whileHover={{ color: "#3B82F6", x: 5 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    Home
+                                </motion.li>
+                            </Link>
                             <Link href='/aboutus'>
                                 <motion.li
+                                    className='text-gray-600 text-sm hover:text-gray-900'
                                     whileHover={{ color: "#3B82F6", x: 5 }}
                                     transition={{ duration: 0.2 }}
                                 >
@@ -75,10 +90,20 @@ const Footer = () => {
                             </Link>
                             <Link href='/ourwork'>
                                 <motion.li
+                                    className='text-gray-600 text-sm hover:text-gray-900'
                                     whileHover={{ color: "#3B82F6", x: 5 }}
                                     transition={{ duration: 0.2 }}
                                 >
-                                    Projects
+                                    Projects & Work
+                                </motion.li>
+                            </Link>
+                            <Link href='/contact'>
+                                <motion.li
+                                    className='text-gray-600 text-sm hover:text-gray-900'
+                                    whileHover={{ color: "#3B82F6", x: 5 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    Contact
                                 </motion.li>
                             </Link>
                         </ul>
@@ -88,25 +113,81 @@ const Footer = () => {
                         variants={itemVariants}
                         whileHover={{ scale: 1.02 }}
                         transition={{ duration: 0.3 }}
+                        className='mb-8 lg:mb-0'
                     >
-                        <h1 className='font-bold text-xl'>Resources</h1>
-                        <ul>
+                        <h1 className='font-bold text-xl mb-4'>Services</h1>
+                        <ul className='space-y-2'>
+                            <motion.li
+                                className='text-gray-600 text-sm hover:text-gray-900'
+                                whileHover={{ color: "#3B82F6", x: 5 }}
+                                transition={{ duration: 0.2 }}
+                            >
+                                ML & AI Solutions
+                            </motion.li>
+                            <motion.li
+                                className='text-gray-600 text-sm hover:text-gray-900'
+                                whileHover={{ color: "#3B82F6", x: 5 }}
+                                transition={{ duration: 0.2 }}
+                            >
+                                Data Engineering
+                            </motion.li>
+                            <motion.li
+                                className='text-gray-600 text-sm hover:text-gray-900'
+                                whileHover={{ color: "#3B82F6", x: 5 }}
+                                transition={{ duration: 0.2 }}
+                            >
+                                Analytics & Insights
+                            </motion.li>
+                            <motion.li
+                                className='text-gray-600 text-sm hover:text-gray-900'
+                                whileHover={{ color: "#3B82F6", x: 5 }}
+                                transition={{ duration: 0.2 }}
+                            >
+                                Custom Development
+                            </motion.li>
+                        </ul>
+                    </motion.div>
+
+                    <motion.div
+                        variants={itemVariants}
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.3 }}
+                        className='mb-8 lg:mb-0'
+                    >
+                        <h1 className='font-bold text-xl mb-4'>Resources</h1>
+                        <ul className='space-y-2'>
                             <Link href='/ourwork'>
                                 <motion.li
+                                    className='text-gray-600 text-sm hover:text-gray-900'
                                     whileHover={{ color: "#3B82F6", x: 5 }}
                                     transition={{ duration: 0.2 }}
                                 >
-                                    Models
+                                    Models & Tools
                                 </motion.li>
                             </Link>
                             <Link href='/ourwork'>
                                 <motion.li
+                                    className='text-gray-600 text-sm hover:text-gray-900'
                                     whileHover={{ color: "#3B82F6", x: 5 }}
                                     transition={{ duration: 0.2 }}
                                 >
-                                    Papers
+                                    Research Papers
                                 </motion.li>
                             </Link>
+                            <motion.li
+                                className='text-gray-600 text-sm hover:text-gray-900'
+                                whileHover={{ color: "#3B82F6", x: 5 }}
+                                transition={{ duration: 0.2 }}
+                            >
+                                Documentation
+                            </motion.li>
+                            <motion.li
+                                className='text-gray-600 text-sm hover:text-gray-900'
+                                whileHover={{ color: "#3B82F6", x: 5 }}
+                                transition={{ duration: 0.2 }}
+                            >
+                                Blog
+                            </motion.li>
                         </ul>
                     </motion.div>
                 </div>

@@ -7,9 +7,11 @@ import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
 
 const teamMembers = [
-    { name: 'Alice Johnson', src: SampleImg },
-    { name: 'Bob Smith', src: SampleImg },
-    { name: 'Charlie Brown', src: SampleImg }
+    { name: 'Alice Johnson', role: 'Chief Technology Officer', expertise: 'Machine Learning & AI Architecture', bio: 'PhD in Computer Science with 8+ years of experience leading innovative data solutions' },
+    { name: 'Bob Smith', role: 'Lead Data Engineer', expertise: 'Big Data Infrastructure & Pipelines', bio: 'Specializes in building scalable systems handling petabyte-scale datasets' },
+    { name: 'Charlie Brown', role: 'Senior Data Scientist', expertise: 'Predictive Analytics & Model Development', bio: '10+ years in developing production machine learning models across multiple industries' },
+    { name: 'Diana Prince', role: 'Solutions Architect', expertise: 'Enterprise Solutions & Integration', bio: 'Expert in designing enterprise-grade data solutions and strategic consulting' },
+    { name: 'Edward Lee', role: 'Full-Stack Developer', expertise: 'Data-Driven Applications', bio: 'Specialized in building high-performance applications that leverage advanced analytics' }
 ];
 
 const AboutPage = () => {
@@ -70,7 +72,7 @@ const AboutPage = () => {
                     <h2 className="text-3xl font-semibold text-[#001538] text-center mb-8">
                         Meet the Team
                     </h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
                         {teamMembers.map((member) => (
                             <div
                                 key={member.name}
@@ -79,12 +81,21 @@ const AboutPage = () => {
                                 <Image
                                     src={member.src}
                                     alt={member.name}
-                                    width={150}
-                                    height={150}
+                                    width={120}
+                                    height={120}
                                     className="rounded-full border-4 border-[#001538]"
                                 />
-                                <p className="mt-4 text-xl font-semibold text-[#001538]">
+                                <p className="mt-4 text-lg font-semibold text-[#001538] text-center">
                                     {member.name}
+                                </p>
+                                <p className="text-sm text-blue-600 font-medium text-center mt-1">
+                                    {member.role}
+                                </p>
+                                <p className="text-xs text-gray-700 font-medium text-center mt-2">
+                                    {member.expertise}
+                                </p>
+                                <p className="text-xs text-gray-600 text-center mt-3 leading-relaxed">
+                                    {member.bio}
                                 </p>
                             </div>
                         ))}

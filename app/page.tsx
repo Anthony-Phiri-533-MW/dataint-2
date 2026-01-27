@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import MainContent from "./components/Content/MainContent";
 import MinorContent from "./components/Content/MinorContent";
+import WhyChooseUs from "./components/Content/WhyChooseUs";
+import ClientSuccessStories from "./components/Content/ClientSuccessStories";
 import MinContent from "./components/Content/MinContent";
 import Footer from "./components/Footer/Footer";
 
@@ -21,6 +23,8 @@ export default function Home() {
       <Hero />
       <MainContent />
       <MinorContent />
+      <WhyChooseUs />
+      <ClientSuccessStories />
       <MinContent />
       <Footer />
     </motion.main>

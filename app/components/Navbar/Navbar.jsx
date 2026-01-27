@@ -24,7 +24,7 @@ const Navbar = () => {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0,  opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="px-4 py-3"           /* ← uniform padding on every screen */
+      className="py-3"
     >
       {/* ---------- Brand ---------- */}
       <div className="flex justify-between items-center">

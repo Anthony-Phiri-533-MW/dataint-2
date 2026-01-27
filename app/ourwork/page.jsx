@@ -7,21 +7,104 @@ import Modal from '../components/Modal/Modal';
 // import { IoClose } from 'react-icons/io5';
 
 const models = [
-    { title: 'Model A', description: 'Description of Model A', link: '#', details: 'Details about Model A', downloadLink: '#' },
-    { title: 'Model B', description: 'Description of Model B', link: '#', details: 'Details about Model B', downloadLink: '#' },
-    { title: 'Model C', description: 'Description of Model C', link: '#', details: 'Details about Model C', downloadLink: '#' },
+    { 
+        title: 'Predictive Analytics Engine', 
+        description: 'Advanced machine learning model for time-series forecasting and trend analysis', 
+        link: '#', 
+        details: 'Our flagship predictive analytics engine utilizes LSTM neural networks and ensemble methods to deliver 95%+ accuracy in financial forecasting, inventory optimization, and demand prediction. Built with production-grade infrastructure.', 
+        downloadLink: '#' 
+    },
+    { 
+        title: 'Customer Churn Prediction Model', 
+        description: 'Binary classification model identifying customers at risk of leaving', 
+        link: '#', 
+        details: 'This model analyzes customer behavior patterns, transaction history, and engagement metrics to predict churn with 92% precision. Enables proactive retention strategies and personalized interventions.', 
+        downloadLink: '#' 
+    },
+    { 
+        title: 'Anomaly Detection System', 
+        description: 'Real-time detection of unusual patterns in operational data', 
+        link: '#', 
+        details: 'Leverages unsupervised learning to identify anomalies in system logs, network traffic, and sensor data. Reduces response time to security threats and operational issues by 70%.', 
+        downloadLink: '#' 
+    },
+    { 
+        title: 'Natural Language Processing Suite', 
+        description: 'Advanced NLP models for text analysis and sentiment detection', 
+        link: '#', 
+        details: 'Comprehensive suite including sentiment analysis, entity recognition, and document classification. Supports 25+ languages and processes 1M+ documents daily with 88% accuracy.', 
+        downloadLink: '#' 
+    },
 ];
 
 const papers = [
-    { title: 'Paper A', authors: 'Author A, Author B', link: '#' },
-    { title: 'Paper B', authors: 'Author C, Author D', link: '#' },
-    { title: 'Paper C', authors: 'Author E, Author F', link: '#' },
+    { 
+        title: 'Optimizing Large-Scale Data Pipelines: A Comparative Analysis of ETL Frameworks', 
+        authors: 'Alice Johnson, Edward Lee', 
+        link: '#',
+        conference: 'International Conference on Big Data, 2023'
+    },
+    { 
+        title: 'Bias Mitigation in Machine Learning Models: Techniques and Best Practices', 
+        authors: 'Charlie Brown, Diana Prince', 
+        link: '#',
+        conference: 'AI Ethics Summit, 2023'
+    },
+    { 
+        title: 'Real-Time Anomaly Detection Using Federated Learning Approaches', 
+        authors: 'Bob Smith, Alice Johnson', 
+        link: '#',
+        conference: 'International Conference on Machine Learning, 2023'
+    },
+    { 
+        title: 'Explainable AI for Enterprise Decision Systems', 
+        authors: 'Diana Prince, Charlie Brown', 
+        link: '#',
+        conference: 'Data Science World, 2023'
+    },
 ];
 
 const projects = [
-    { title: 'Project A', description: 'Description of Project A', link: '#', timePeriod: '2022-2023', companies: 'Company X, Company Y' },
-    { title: 'Project B', description: 'Description of Project B', link: '#', timePeriod: '2021-2022', companies: 'Company A, Company B' },
-    { title: 'Project C', description: 'Description of Project C', link: '#', timePeriod: '2020-2021', companies: 'Company M, Company N' },
+    { 
+        title: 'Financial Services Fraud Detection Platform', 
+        description: 'Implemented real-time fraud detection system preventing $50M+ in fraudulent transactions annually', 
+        link: '#', 
+        timePeriod: '2023-2024', 
+        companies: 'Major Financial Institution',
+        results: 'Achieved 99.2% fraud detection rate with <0.1% false positives'
+    },
+    { 
+        title: 'E-Commerce Demand Forecasting System', 
+        description: 'Built predictive analytics system improving inventory management and reducing stockouts', 
+        link: '#', 
+        timePeriod: '2022-2023', 
+        companies: 'Leading Retail Chain',
+        results: 'Reduced excess inventory by 35% and stockouts by 42%'
+    },
+    { 
+        title: 'Healthcare Patient Risk Stratification Model', 
+        description: 'Developed machine learning system identifying high-risk patients for proactive intervention', 
+        link: '#', 
+        timePeriod: '2022-2023', 
+        companies: 'Hospital Network Group',
+        results: 'Reduced readmission rates by 28% and improved patient outcomes'
+    },
+    { 
+        title: 'Smart City IoT Analytics Platform', 
+        description: 'Deployed real-time analytics platform processing 500K+ sensor data points daily', 
+        link: '#', 
+        timePeriod: '2021-2023', 
+        companies: 'Metropolitan Government, Smart City Initiative',
+        results: 'Optimized traffic flow (15% congestion reduction), improved energy efficiency by 22%'
+    },
+    { 
+        title: 'Supply Chain Optimization Engine', 
+        description: 'Implemented AI-driven supply chain optimization reducing logistics costs significantly', 
+        link: '#', 
+        timePeriod: '2021-2022', 
+        companies: 'Global Manufacturing Corporation',
+        results: 'Reduced supply chain costs by 18% and delivery time by 25%'
+    },
 ];
 
 const OurWork = () => {
@@ -109,6 +192,7 @@ const OurWork = () => {
                                     <li key={paper.title} className="p-4 border border-gray-200 rounded-lg shadow-sm bg-white">
                                         <h3 className="text-xl font-medium">{paper.title}</h3>
                                         <p className="mt-1 text-gray-600">Authors: {paper.authors}</p>
+                                        <p className="mt-1 text-sm text-gray-500">Published: {paper.conference}</p>
                                         <a href={paper.link} className="inline-block bg-[#001538] text-white px-4 py-2 rounded mt-3 hover:bg-[#002a5c] transition">
                                             Read Paper
                                         </a>
@@ -126,17 +210,26 @@ const OurWork = () => {
                                     <li key={project.title} className="p-4 border border-gray-200 rounded-lg shadow-sm bg-white">
                                         <h3 className="text-xl font-medium">{project.title}</h3>
                                         <p className="mt-2 text-gray-700">{project.description}</p>
+                                        <div className="mt-2 text-sm text-gray-600">
+                                            <p><strong>Time Period:</strong> {project.timePeriod}</p>
+                                            <p><strong>Client:</strong> {project.companies}</p>
+                                        </div>
                                         <button
                                             onClick={() => openModal(
                                                 <div>
-                                                    <h3 className="text-xl font-medium mb-2">{project.title}</h3>
-                                                    <p className="mb-2"><strong>Time Period:</strong> {project.timePeriod}</p>
-                                                    <p><strong>Companies Involved:</strong> {project.companies}</p>
+                                                    <h3 className="text-xl font-medium mb-4">{project.title}</h3>
+                                                    <p className="mb-3 text-gray-700">{project.description}</p>
+                                                    <div className="space-y-2 mb-4">
+                                                        <p><strong>Time Period:</strong> {project.timePeriod}</p>
+                                                        <p><strong>Client:</strong> {project.companies}</p>
+                                                        <p><strong>Key Results:</strong></p>
+                                                        <p className="text-green-600 font-medium">{project.results}</p>
+                                                    </div>
                                                 </div>
                                             )}
                                             className="mt-3 inline-block bg-[#001538] text-white px-4 py-2 rounded hover:bg-[#002a5c] transition"
                                         >
-                                            Explore Project
+                                            View Details
                                         </button>
                                     </li>
                                 ))}
