@@ -14,7 +14,7 @@ const Page = () => {
       {/* Hero */}
       <section className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-          Let's Transform Your Data into Results
+          Let&apos;s Transform Your Data into Results
         </h1>
         <p className="mt-4 text-lg text-gray-600 leading-relaxed">
           Ready to unlock the power of data-driven innovation? Our team of experts is here to help you 
